@@ -33,6 +33,9 @@ class PlayersController < ApplicationController
     end
   end
 
+  # TODO just inactivate the player
+  def destroy; end
+
   private
 
   def player_params

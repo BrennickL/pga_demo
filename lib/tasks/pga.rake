@@ -13,4 +13,13 @@ namespace :db do
       end
     end
   end
+
+  namespace :games do
+    desc "Create Games"
+    task create: :environment do
+      Game.create!(
+        tee_time: Faker::Time.between(from: DateTime.now, to: DateTime.now + 1.hour)
+      )
+    end
+  end
 end
