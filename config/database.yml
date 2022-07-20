@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: template_repo_development
+  database: pga_demo_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: template_repo_test
+  database: pga_demo_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: template_repo_production
-  username: template_repo
+  database: pga_demo_production
+  username: pga_demo
   password: <%= ENV["TEMPLATE_REPO_DATABASE_PASSWORD"] %>
