@@ -1,29 +1,19 @@
-# Instructions for Template ROR API
+## Notes to Reviewers
 
-- GitHub only lets you fork a repo once, so, if you want to make more than one copy of a project
-  here's how you can do it. Useful for starter code.
+The following notes are an evaluation of where the project stands at the moment.
+Admittedly, it is not complete, though the ground work has been laid. 
 
-  - Create a new empty folder for your project and initialize git
-    ```sh
-    cd where-you-keep-your-projects
-    mkdir your-project-name
-    cd your-project-name
-    git init
-    ```
+## how to test
+- Run the server on port 3001. If you want to use 3000, update the curl scripts accordingly
+- You'll also need to have `postgresql` installed
+- Ensure you have `jq` installed for displaying formatted JSON in the console, see Curl scripts
+- Curl was used to test/ping the endpoints during development
+- JSON files were created for use with Curl for testing
 
-  - "Pull" the repo you want to copy:
-    ```sh
-    # git url is the same as the clone URL
-    git pull git-url-of-the-repo-you-want-to-copy
-    ```
-
-  - Create a **new repository** for your project on GitHub.
-    ```sh
-    git remote add origin git-url-of-the-new-repo-you-created
-    ```
-  - Push your code to the new repository you just created
-    ```
-    git push -u origin master
-    ```
-
-[How to Copy a GitHub Repo without Forking](https://gist.githubusercontent.com/natedana/cc71d496b611e70673cab5e8f5a78485/raw/57683ee760b0fc0b8c4e9c8a85f54bab46395239/copy-repo.md)
+### What can be improved?
+- Authentication
+- Forget about most of the controllers and focus on creating a Score card from Faker example data
+- Better error handling. This can be added to the `application_controller`
+- Better placement of the `allowance` field. Possible it's own table depending of whether or not historical data is stored
+- Better Seed data. Data specific to Score card generation
+- I'm sure there are at least a dozen other aspects that I'm currently overlooking.. It's a start.. Not a polished product..
