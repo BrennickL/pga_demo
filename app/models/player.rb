@@ -1,4 +1,6 @@
 class Player < ApplicationRecord
+  has_many :games, through: :players_games
+
   before_validation :calculate_allowance
 
   validates :first_name, presence: true
