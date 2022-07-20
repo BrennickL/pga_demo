@@ -6,5 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+# Must run in order
+Rake::Task['db:holes:create'].invoke
+Rake::Task['db:courses:create'].invoke
 Rake::Task['db:players:create'].invoke
 Rake::Task['db:games:create'].invoke
