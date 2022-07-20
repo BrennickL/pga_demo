@@ -11,4 +11,10 @@ Rails.application.routes.draw do
   resources :games, except: [:index, :destroy] do
     get 'players', on: :member, action: :game_players
   end
+
+  resources :courses do
+    resources :holes, except: [:destroy] do
+      post :assign, on: :collection
+    end
+  end
 end

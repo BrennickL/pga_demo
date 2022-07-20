@@ -10,13 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_20_202158) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_20_215648) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "courses", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "courses_holes", force: :cascade do |t|
+    t.bigint "course_id"
+    t.bigint "hole_id"
+    t.integer "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_courses_holes_on_course_id"
+    t.index ["hole_id"], name: "index_courses_holes_on_hole_id"
+  end
 
   create_table "games", force: :cascade do |t|
     t.datetime "tee_time", precision: nil
     t.datetime "finish_time", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "holes", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -32,8 +57,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_20_202158) do
   create_table "players_games", force: :cascade do |t|
     t.bigint "player_id"
     t.bigint "game_id"
+    t.bigint "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_players_games_on_course_id"
     t.index ["game_id"], name: "index_players_games_on_game_id"
     t.index ["player_id"], name: "index_players_games_on_player_id"
   end
